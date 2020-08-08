@@ -5,17 +5,29 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="../static/teacher-dashboard.css" rel="stylesheet">
+  <link href="../static/course.css" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >    
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){
+          $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
+        </script>
  
 </head>
 <body>
 
 
-<nav class="navbar navbar-expand-sm  bg-primary navbar-dark">
+<nav class="navbar navbar-expand-sm   navbar-dark  bg-dark">
   <a class="navbar-brand" href="#"><img src="../static/images/Logo.png" class="logo"/>Lend a Hand</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
@@ -23,7 +35,7 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">Courses</a>
+        <a class="nav-link" href="course.html">Courses</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Feedback</a>
@@ -32,7 +44,7 @@
     </ul>
   </div>  
   <div class="navbar-nav ml-auto">
-      <a href="profile.html" class="nav-item nav-link">Logged in as X</a>
+      <a href="logout.html" class="nav-item nav-link">Logout</a>
 </div>
 </nav>
 <div class="jumbotron text-center" style="margin-bottom:0">
@@ -51,28 +63,74 @@
       
       <hr class="d-sm-none">
     </div>
+
     <div class="col-sm-4">
-      <div class="bs-example">
-        <div class="card" style="width: 300px;">
-            <img src="../static/images/farm.jpg" class="card-img-top" alt="...">
-            <div class="card-body text-center">
-                <h3 class="card-title">Farming</h3>
-               <h5>Chapters: 2</h5>
-                <a href="course.html" class="btn btn-primary stretched-link">View Content</a>
-            </div>
-        </div>
+      <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2">
+        <span><i class="fa fa-search"></i> </span>
+        <input class="form-control form-control-sm mr-3 w-75" id="myInput" type="text" placeholder="Search"
+          aria-label="Search">
+       
+      </form>
+      <table>
+        <thead>
+            <tr>
+                <th>
+                    Resource link
+                </th>
+                
+            </tr>
+        </thead>
+        <tbody id="myTable">
+    {% for resource in resources %}
+        
+        <tr>            
+           <td >{{resource.course_id}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    
+</table>
     </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="card" style="width:300px">
-        <img src="../static/images/farm.jpg" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-          <h3 class="card-title">Media</h3>
-          <h5>Chapters: 2</h5>
-           <a href="course.html" class="btn btn-primary stretched-link">View Content</a>
-        </div>
+      <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 form-box text-center">
+         <div class="heading mb-3">
+          <h4>Resources</h4>
       </div>
-    </div>
+      <form >
+          <div class="form-input">
+              <label>Session Title:</label>
+              <input type="text"  required>
+          </div>
+          <div class="form-input">
+              <label>Video/PDF Link:</label>                                
+              <input type="text"  required>
+          </div>
+          <div class="form-input">
+            <label>Test Link</label>                                
+            <input type="text"  required>
+        </div>
+          <div class="form-input">
+              <label>Date and Time of session</label>                                
+              <input type="datetime-local"  required>
+          </div>
+              <table >
+                <tr>
+               <td><div class="text-left mb-3">
+                  <button type="submit" class="btn">Add to Agenda</button>
+              </div></td>
+              <td><div class="text-left mb-3">
+                <a href="https://docs.google.com/forms/u/0/"><button type="button" class="btn">Add Test</button></a> 
+             </div></td>
+          </tr>
+          </table>
+            </form>
+          </div>
+        </div>
+             
+     
+  </div>
+</div>
+         </div>
+    
     </div>
     </div>
     
