@@ -1,0 +1,172 @@
+.side{
+    margin-top: 20px;
+    flex:20%;
+    background-color: rgb(117, 223, 217);
+    opacity: 75%;
+    }
+
+    .image-container{
+        background: url('images/reg.png') center no-repeat;
+        background-size: cover;
+        /* opacity: 0.7; */
+        height: 100vh;
+    }
+     
+    .form-container{
+       
+        background: linear-gradient(rgb(243, 244, 245),rgb(24, 95, 128)); 
+        
+        display:flex;
+        justify-content: center;
+    }
+    .form-box{
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         min-height: 100vh;
+    }
+    .welcome{
+        position: absolute;
+        justify-content: center;
+        text-align: center;
+        margin-top: 200px;
+    }
+    .welcome h1{
+        color: rgb(246, 248, 248);
+        text-align: center;
+    }
+    .form-box h4{
+        font-weight: bold;
+        color:rgb(6, 41, 46);
+    }
+    .form-box .form-input{
+        position: relative;
+    
+    }
+    .form-box .form-input input{
+        width: 100%;
+        height:40px;
+        margin-bottom: 20px;
+        border:none;
+        border-radius: 5px;
+        outline:none;
+        background: whitesmoke;
+        padding-left: 45px;  
+    
+    }
+    
+    .form-box .form-input span{
+        position: absolute;
+        top:8px;
+        padding-left: 20px;
+        color: rgb(15, 52, 70);
+    }
+    .form-box .form-box input::placeholder{
+        padding-left: 0px;
+    }
+    .form-box .form-input input:focus,
+    .form-box .form-input input:valid{
+        border-bottom: 2px solid rgb(231, 82, 174);
+    }
+       
+    .form-box input[type="checkbox"]:not(:checked)+ label:before{
+        background: transparent;
+        border:2px solid rgb(15, 52, 70);
+        width: 15px;
+        height: 15px;
+    }
+    
+    .form-box .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before{
+        background-color: rgb(231, 82, 174);
+        border: 0px;
+    }
+    .form-box button[type="submit"]{
+        border: none;
+        cursor: pointer;
+        width: 150px;
+        height:40px;
+        border-radius: 5px;
+        background-color: rgb(15, 52, 70);
+        color:whitesmoke;
+        font-weight: bold;
+        transition: 0.5s;
+    }
+    .form-box button[type="submit"]:hover{
+        -webkit-box-shadow: 0px 9px 10px -2px rgba(15,52,70,1);
+    -moz-box-shadow: 0px 9px 10px -2px rgba(15,52,70,1);
+    box-shadow: 0px 9px 10px -2px rgba(15,52,70,1);
+    
+    }
+    .forget-link, register-link{
+        color:rgb(3, 64, 68);
+        font-weight: bold;
+    }
+    .forget-link:hover,.register-link:hover{
+        color:rgb(84, 164, 218);
+    }
+    .property-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+        padding : 20px;
+      }
+      
+      .property-full-width {
+        width: 100%;
+      }
+      
+      td {
+        padding-right: 8px;
+      }
+      
+      section {
+        display: table;
+      }
+      
+      .property-label {
+        display: table-cell;
+        font-size: 14px;
+        margin-left: 8px;
+        min-width: 120px;
+      }
+      
+      .property-button-row {
+        display: table-cell;
+        width: 490px;
+      }
+      
+      .property-button-row .mat-button-base {
+        margin: 8px 8px 8px 0;
+      }
+      
+      .property-button-container {
+        display: flex;
+        justify-content: center;
+        width: 120px;
+      }
+      .tp-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 30px;
+        background: linear-gradient(rgb(60, 39, 248),rgb(18, 33, 75)); 
+     }
+     .tp-container > * {
+        width: 100%;
+     }
+
+     .side a,h4{
+        padding:14px 20px;
+        
+        text-align:center;
+        color: black;
+        text-decoration: none;
+        display:block;
+        font-size: 25px;
+    }
+    .side a:hover{
+        color:whitesmoke;
+        background-color: rgb(32, 172, 130);
+    }
+    
