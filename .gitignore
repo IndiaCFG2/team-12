@@ -4,3 +4,6 @@ Team*.zip
 *.crt
 *.key
 *.ovpn
+
+venv
+.flaskenv
