@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){
+          $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
+        </script>
+        <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+    </head>
+    <body>
+        <input id="myInput" type="text" placeholder="Search..">
+<br><br>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Chapter
+                </th>
+                <th>
+                    Content
+                </th>
+                <th>
+                    Course
+                </th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+    {% for resource in resources %}
+        
+        <tr>            
+            <td >{{resource.name}}</td>
+            <td >{{resource.chapter}}</td>
+            <td >{{resource.content}}</td>
+            <td >{{resource.course_id}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    
+</table>
+
+
+       
+    </body>
+</html>

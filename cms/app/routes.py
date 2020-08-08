@@ -10,6 +10,12 @@ def home():
 def login():
     return render_template('login.html')
 
+@app.route('/search')
+def search():
+    resources = Resource.query.all()
+    return render_template('search.html',resources=resources)
+
+
 @app.route('/logout<usertype>',methods=["GET","POST"])
 def logout(usertype):
     session.pop(usertype,None)
@@ -28,8 +34,7 @@ def teacher():
             session['teacher']=teach
             return render_template('teacher.html',teach=teach)
         else :
-            return redirect(url_for('login'))    
-
+            return redirect(url_for('login'))        
 
 @app.route('/student',methods=["POST"])
 def student():
