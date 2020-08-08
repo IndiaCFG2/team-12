@@ -1,0 +1,18 @@
+.navbar{
+    background-color:lightskyblue;
+
+}
+.navbar a{
+    padding:14px 20px;
+    
+    text-align:center;
+    color: black;
+    text-decoration: none;
+    display:inline-block;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+.navbar a:hover{
+    color:whitesmoke;
+    background-color: rgb(33, 101, 211);
+}
