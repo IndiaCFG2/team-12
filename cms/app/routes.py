@@ -1,17 +1,8 @@
 from app import app,db
-from flask import redirect,render_template,url_for
-from flask_login import login_user,LoginManagercurrent_user, LoginManager,login_user, logout_user,login_required
-from models import *
+from flask import redirect,render_template,url_for,session
+from app.models import *
 
-loginmanager=LoginManager()
-loginmanager.init_app(app)
-
-@login_manager.user_loader
-def load_user(user_id):
-    return 
-
-@app.route('/'.methods=["GET"])
-
+@app.route('/', methods=["GET"])
 def home():
     return render_template("home.html")
 
@@ -19,44 +10,54 @@ def home():
 def login():
     return render_template('login.html')
 
-@app.route('/logout',methods=["GET","POST"])
-def logout():
-    logout_user()
+@app.route('/logout<usertype>',methods=["GET","POST"])
+def logout(usertype):
+    session.pop(usertype,None)
     return redirect(url_for('home'))
 
 @app.route('/teacher',methods=["POST"])
 def teacher():
+    if 'teacher' in session:
+        teach=session['teacher']
+        return render_template('teacher.html',teach=teach)
+    else :
+        username = request.form["username"]
+        password = request.form["password"]
+        teach = Teacher.query.filter_by(username = username)
+        if not teach is None:
+            session['teacher']=teach
+            return render_template('teacher.html',teach=teach)
+        else :
+            return redirect(url_for('login'))    
 
-    user_name = request.form["username"]
-    password = request.form["password"]
-    authenticated = Teacher.query(username = user_name)
-    
-    if password == authenticated.password:         
-        login_user(authenticated) #####
-        return render_template('teacher.html',args=args)
-    else:
-        return redirect(url_for('login'))
 
 @app.route('/student',methods=["POST"])
 def student():
-    user_name = request.form["username"]
-    password = request.form["password"]
-    authenticated = Student.query(username = user_name)
-
-    if password == authenticated.password: 
-        login_user(authenticated) #####                 
-        return render_template('student.html',args=args)
-    else:
-        return redirect(url_for('login'))   
+    if 'student' in session:
+        stud=session['student']
+        return render_template('student.html',stud=stud)
+    else :
+        username = request.form["username"]
+        password = request.form["password"]
+        stud = student.query.filter_by(username = username)
+        if not stud is None:
+            session['student']=stud
+            return render_template('student.html',stud=stud)
+        else :
+            return redirect(url_for('login'))  
 
 @app.route('/admin',methods=["POST"])
 def admin():
-    user_name = request.form["username"]
-    password = request.form["password"]
-    authenticated = Student.query(username = user_name)
-    if password == authenticated.password:     
-        login_user(authenticated) #####                      
-        return render_template('admin.html',args=args)
-    else:
-        return redirect(url_for('login'))             
+    if 'admin' in session:
+        adm=session['admin']
+        return render_template('admin.html',adm=adm)
+    else :
+        username = request.form["username"]
+        password = request.form["password"]
+        adm = Admin.query.filter_by(username = username)
+        if not adm is None:
+            session['student']=stud
+            return render_template('admin.html',adm=adm)
+        else :
+            return redirect(url_for('login'))    
 
