@@ -1,6 +1,33 @@
 from app import app,db
 from flask import redirect,render_template,url_for,session
 from app.models import *
+from twilio.rest import Client
+from pytube import YouTube
+
+@app.route('/notif', methods=["GET"])
+def notif():
+    resources = Resource.query.all()
+    return render_template("notif.html")    
+
+
+@app.route('/download', methods=["GET", "POST"])
+def download():
+    
+    print("pls work")
+    yturl = 'https://www.youtube.com/watch?v=C99rqP-lMjM'
+    yt = YouTube(yturl)
+    if yt.age_restricted == False:
+        filters = yt.streams.filter(progressive=True, file_extension='mp4').first()
+        filters.download()
+    else:
+        flash("Age restricted video")
+    
+
+@app.route('/download_res', methods=["GET", "POST"])
+def download_res():
+    #video
+    youtube_api = "##"
+    return render_template('download_res.html', youtube_api=youtube_api)
 
 @app.route('/', methods=["GET"])
 def home():
