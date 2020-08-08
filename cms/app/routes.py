@@ -26,32 +26,37 @@ def logout():
 
 @app.route('/teacher',methods=["POST"])
 def teacher():
-     
-     if :
-         #query
-         login_user()
-         return render_template('teacher.html',args=args)
-     else:
 
-         return redirect(url_for('login'))
+    user_name = request.form["username"]
+    password = request.form["password"]
+    authenticated = Teacher.query(username = user_name)
+    
+    if password == authenticated.password:         
+        login_user(authenticated) #####
+        return render_template('teacher.html',args=args)
+    else:
+        return redirect(url_for('login'))
 
 @app.route('/student',methods=["POST"])
 def student():
-    #query
-     if :
-         #query
-         return render_template('student.html',args=args)
-     else:
+    user_name = request.form["username"]
+    password = request.form["password"]
+    authenticated = Student.query(username = user_name)
 
-         return redirect(url_for('login'))   
+    if password == authenticated.password: 
+        login_user(authenticated) #####                 
+        return render_template('student.html',args=args)
+    else:
+        return redirect(url_for('login'))   
 
 @app.route('/admin',methods=["POST"])
 def admin():
-    #query
-     if :
-         #query
-         return render_template('admin.html',args=args)
-     else:
-
-         return redirect(url_for('login'))             
+    user_name = request.form["username"]
+    password = request.form["password"]
+    authenticated = Student.query(username = user_name)
+    if password == authenticated.password:     
+        login_user(authenticated) #####                      
+        return render_template('admin.html',args=args)
+    else:
+        return redirect(url_for('login'))             
 

@@ -44,8 +44,8 @@ class Course(db.Model):
 class Resource(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), index=True, unique=True)
-    chapter = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String(64), index=True, unique=True)
+    chapter = db.Column(db.String(64), index=True, unique=True)
+    content = db.Column(db.String(64), index=True, unique=True)    
     course_id = db.Column(db.Integer, db.ForeignKey('course.id')) #
 
     def __repr__(self):
@@ -81,11 +81,21 @@ class Class(db.Model):
 
 class Session(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(64), index=True, unique=True)
+    name = db.Column(db.String(64), index=True, unique=True)
     start_time = db.Column(db.DateTime(), index=True)
-    end_time = db.Column(db.DateTime(), index=True)
+    end_time = db.Column(db.DateTime(), index=True)    
     teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id')) #
     course_id = db.Column(db.Integer, db.ForeignKey('course.id')) #
-
+    marks = db.Column(db.Integer, db.ForeignKey('marks.id'))     
+    
     def __repr__(self):
-        return '<Session {}>'.format(self.username)           
+        return '<Session {}>'.format(self.username)    
+
+
+class Marks(db.Model):
+    id = db.Column(db.Integer, primary_key=True)    
+    session_id = db.Column(db.Integer, db.ForeignKey('session.id'))     
+    
+    def __repr__(self):
+        return '<Assessment {}>'.format(self.username)   
+
