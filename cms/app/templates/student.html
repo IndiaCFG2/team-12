@@ -25,13 +25,13 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="course.html">Video Download</a>
+        <!-- <a class="nav-link" href="course.html">Video Download</a> -->
       </li>
                
     </ul>
   </div>  
   <div class="navbar-nav ml-auto">
-      <a href="logout.html" class="nav-item nav-link">Logout</a>
+      <a href="/logout" class="nav-item nav-link">Logout</a>
 </div>
 </nav>
 <div class="jumbotron text-center" style="margin-bottom:0">
@@ -41,8 +41,9 @@
 </div>
 
 <div class="container" style="margin-top:30px">
-    <h2>Courses</h2>
+    <h2>Sessions</h2>
     <div class="row">
+    
         <div class="col-sm-4">
             <div class="bs-example" >
                 <div class="card" style="width: 300px;">
@@ -50,8 +51,10 @@
                     <div class="card-body text-center">
                         <h3 class="card-title">Farming</h3>
                        <h5>Chapters: 2</h5>
-                        <a href="course.html" class="btn btn-primary stretched-link">View Content</a>
-                        <a href="course.html" class="btn btn-primary stretched-link">Download</a>
+                        <a href="https://www.youtube.com/playlist?list=PLYihddLF-CgYuWNL55Wg8ALkm6u8U7gps" class="btn btn-primary stretched-link">View Content</a>
+                        <form action="/download" method="POST">
+                            <button   class="btn btn-primary stretched-link">Download</button>
+                        </form>
                     </div>
                 </div>
             </div> 
@@ -64,20 +67,9 @@
                         <h3 class="card-title">Farming</h3>
                        <h5>Chapters: 2</h5>
                         <a href="course.html" class="btn btn-primary stretched-link">View Content</a>
-                        <a href="course.html" class="btn btn-primary stretched-link">Download</a>
-                    </div>
-                </div>
-            </div> 
-        </div>
-        <div class="col-sm-4">
-            <div class="bs-example" >
-                <div class="card" style="width: 300px;">
-                    <img src="../static/images/farm.jpg" class="card-img-top" alt="...">
-                    <div class="card-body text-center">
-                        <h3 class="card-title">Farming</h3>
-                       <h5>Chapters: 2</h5>
-                        <a href="course.html" class="btn btn-primary stretched-link">View Content</a>
-                        <a href="course.html" class="btn btn-primary stretched-link">Download</a>
+                        <form action="/download" method="POST">
+                            <button   class="btn btn-primary stretched-link">Download</button>
+                        </form>
                     </div>
                 </div>
             </div> 

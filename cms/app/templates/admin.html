@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+<script>
+    window.onload = function() {
+    
+    
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        title: {
+            text: "Content Feedback"
+        },
+        data: [{
+            type: "pie",
+            startAngle: 240,
+            yValueFormatString: "##0.00\"%\"",
+            indexLabel: "{label} {y}",
+            dataPoints: [
+                {y: 79.45, label: "Excellent"},
+                {y: 7.31, label: "Very Good"},
+                {y: 7.06, label: "Good"},
+                {y: 4.91, label: "Average"},
+                {y: 1.26, label: "Bad"}
+            ]
+        }]
+    });
+    chart.render();
+    
+    }
+    </script>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="../static/teacher-dashboard.css" rel="stylesheet">
+  <link href="../static/course.css" rel="stylesheet">
+  <link href="../static/student.css" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >    
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-sm   navbar-dark  bg-dark">
+  <a class="navbar-brand" href="#"><img src="../static/images/Logo.png" class="logo"/>Lend a Hand</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <!-- <a class="nav-link" href="course.html">Video Download</a> -->
+      </li>
+               
+    </ul>
+  </div>  
+  <div class="navbar-nav ml-auto">
+      <a href="/logout" class="nav-item nav-link">Logout</a>
+</div>
+</nav>
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>Admin Dashboard</h1>
+  <div class="container">
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+</div>  
+
+  
+</div>
+
+<div class="jumbotron text-center" style="text-align:center">
+
+    <label for="myfile"><h2>Bulk Upload </h2></label><br>
+    <input type="file" id="myfile" name="myfile">
+</div>
+
+
+
+    
+     
+
+
+</body>
+</html>

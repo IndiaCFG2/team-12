@@ -54,6 +54,14 @@
                             </div>
                                <div class="text-left mb-3">
                                    <button type="submit" class="btn">Register</button>
+                                   {% with messages = get_flashed_messages() %}
+                                   {% if messages %}
+                                        <br>
+                                            {{messages}}
+                                            
+                                            {% endif %}
+                                            {% endwith %}        
+ 
                                </div>
                                
                         </form>
