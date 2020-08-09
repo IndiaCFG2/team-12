@@ -22,6 +22,7 @@
           });
         });
         </script>
+        
  
 </head>
 <body>
@@ -62,12 +63,11 @@
         <table>
           <tr>
                   <th>Date</th>
-                  <th>Session</th>
-                  
+                  <th>Session</th>                  
               </tr>
-      <tr>
-          <td>Date</td>
-          <td>farm</td>
+          <tr>
+          <td id="date"></td>
+          <td id="title"></td>
           
       </tr>
       </table>
@@ -111,19 +111,19 @@
       <form >
           <div class="form-input">
               <label>Session Title:</label>
-              <input type="text"  required>
+              <input type="text" name="title" id="sessionId" required>
           </div>
           <div class="form-input">
               <label>Video/PDF Link:</label>                                
-              <input type="text"  required>
+              <input type="text" name="video" required>
           </div>
           <div class="form-input">
             <label>Test Link</label>                                
-            <input type="text"  required>
+            <input type="text" name="test" >
         </div>
           <div class="form-input">
               <label>Date and Time of session</label>                                
-              <input type="datetime-local"  required>
+              <input type="datetime-local" name="date" id="sessionDate" required>
           </div>
               <table >
                 <tr>
@@ -131,7 +131,7 @@
                   <button type="submit" class="btn">Add to Agenda</button>
               </div></td>
               <td><div class="text-left mb-3">
-                <a href="https://docs.google.com/forms/u/0/"><button type="button" class="btn">Add Test</button></a> 
+                <a href="https://docs.google.com/forms/u/0/"><button type="button" onclick="getsession()" class="btn">Add Test</button></a> 
              </div></td>
           </tr>
           </table>
@@ -148,7 +148,12 @@
     </div>
     
      
-
+    <script>
+      function getsession(){
+       var id= document.getElementById("sessionId");
+        document.getElementById("title").innerHTML = id;
+      }
+    </script>
 
 </body>
 </html>
