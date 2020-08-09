@@ -3,6 +3,9 @@ from flask import redirect,render_template,url_for,session
 from app.models import *
 from twilio.rest import Client
 from pytube import YouTube
+from datetime import datetime
+from app.helpers import  whatsapp
+
 
 @app.route('/notif', methods=["GET"])
 def notif():
@@ -12,8 +15,6 @@ def notif():
 
 @app.route('/download', methods=["GET", "POST"])
 def download():
-    
-    print("pls work")
     yturl = 'https://www.youtube.com/watch?v=C99rqP-lMjM'
     yt = YouTube(yturl)
     if yt.age_restricted == False:
@@ -21,6 +22,7 @@ def download():
         filters.download()
     else:
         flash("Age restricted video")
+        return 404
     
 
 @app.route('/download_res', methods=["GET", "POST"])
@@ -37,10 +39,9 @@ def home():
 def login():
     return render_template('login.html')
 
-@app.route('/search')
-def search():
-    resources = Resource.query.all()
-    return render_template('search.html',resources=resources)
+@app.route('/signup',methods=["GET","POST"])
+def signup():
+    return render_template('register.html')    
 
 
 @app.route('/logout<usertype>',methods=["GET","POST"])
@@ -52,7 +53,8 @@ def logout(usertype):
 def teacher():
     if 'teacher' in session:
         teach=session['teacher']
-        return render_template('teacher.html',teach=teach)
+        resources=Resource.query().all()
+        return render_template('teacher.html',teach=teach,resources=resources)
     else :
         username = request.form["username"]
         password = request.form["password"]
@@ -93,3 +95,15 @@ def admin():
         else :
             return redirect(url_for('login'))    
 
+@app.route('/addsession',methods="POST")
+def addsession():
+    if 'teacher' in session:
+        teach = session['teacher']
+        name=request.form["title"]
+        link=request.form["video"]
+        test=request.form["test"]
+        date=request.form["date"]
+        sess=Session(name=name,time=datetime.utcnow(),teacher_id=session['teacher'].id,course_id=session['teacher'].course_id)
+        #whatsapp()
+        #mail
+        #sms
