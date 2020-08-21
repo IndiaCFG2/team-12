@@ -1,12 +1,12 @@
 from twilio.rest import Client
 import smtplib
-account_sid = "ACe2f10ba80d6f106f80c24a963ba04509"
-auth_token = "aea579ac995ddb4615cf1746ddbe563a"
+account_sid = "" #twilio-acc-sid 
+auth_token = "" #twilio-acc-auth-token
 message = """
     Hello Student
     This is the content that will covered today,
     hope you are doing well.
-    Youtube link: https://www.youtube.com/watch?v=C99rqP-lMjM \n
+    Youtube link:  \n
     It teaches life leasons
     """
 def whatsapp():
@@ -16,20 +16,17 @@ def whatsapp():
     client = Client(account_sid, auth_token)
 
     # this is the Twilio sandbox testing number
-    from_whatsapp_number='whatsapp:+14155238886'
+    from_whatsapp_number='whatsapp:'
     # replace this number with your own WhatsApp Messaging number
-    to_whatsapp_number='whatsapp:918185039662'
+    to_whatsapp_number='whatsapp:'
     
     client.messages.create(body=message,from_=from_whatsapp_number,to=to_whatsapp_number)
 
 def sms():
-    # account_sid = "ACe2f10ba80d6f106f80c24a963ba04509"
-    # auth_token = "aea579ac995ddb4615cf1746ddbe563a"
-    # ​
     client = Client(account_sid, auth_token)
     client.messages.create(
-    to="+919426158031",
-    from_="+12565634331",
+    to="", #twilio number
+    from_="", #your phone number
     body=message) 
 
 def mail():
@@ -37,12 +34,12 @@ def mail():
     Hello Student
     This is the content that will covered today,
     hope you are doing well.
-    Youtube link: https://www.youtube.com/watch?v=C99rqP-lMjM \n
+    Youtube link: \n
     It teaches life leasons
     """
     smtpObj = smtplib.SMTP('smtp.gmail.com', 587)
     smtpObj.starttls()
-    smtpObj.login("no.reply.hms.hms@gmail.com", "noreplyhms@1")
-    smtpObj.sendmail("no.reply.hms.hms@gmail.com", "rohitdandamudi.1100@gmail.com", message)         
+    smtpObj.login("from_mail", "passwd")
+    smtpObj.sendmail("from_mail", "to_mail", message)         
     print ("Successfully sent email")
     smtpObj.quit()
