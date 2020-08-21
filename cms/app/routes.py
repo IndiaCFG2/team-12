@@ -22,14 +22,14 @@ def notif():
    
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
-    flash("For notifications add +14155238886 to your contacts and start your conversation in whatsapp as 'join bottom-sea' ")
+    flash("For notifications add twilio_number to your contacts and start your conversation in whatsapp as twilio_code ")
     return render_template('register.html')
 
 
 @app.route('/download', methods=["GET", "POST"])
 def download():
         
-    yturl = 'https://www.youtube.com/watch?v=BRMS3T11Cdw&list=PLYihddLF-CgYuWNL55Wg8ALkm6u8U7gps&index=2&t=0s'
+    yturl = ''
     yt = YouTube(yturl)
     if yt.age_restricted == False:
         filters = yt.streams.filter(progressive=True, file_extension='mp4').first()
